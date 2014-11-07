@@ -92,3 +92,7 @@ dovecot   unix  -       n       n       -       -       pipe
 <% @master_services.each do |service| -%>
 <%= service %>
 <% end -%>
+<% if @spf -%>
+policy-spf  unix  -       n       n       -       -       spawn
+	user=nobody argv=<%= @spf_binary %>
+<% end -%>

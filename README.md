@@ -51,6 +51,7 @@ class { '::postfix::server':
     '/^From: .*@(example\.com|example\.net)/ REJECT Spam, go away',
     '/^From: .*@(lcfnl\.com|.*\.cson4\.com|.*\.idep4\.com|.*\.gagc4\.com)/ REJECT user unknown',
   ],
+  spf                   => true,
   postgrey              => true,
   spamassassin          => true,
   sa_skip_rbl_checks    => '0',

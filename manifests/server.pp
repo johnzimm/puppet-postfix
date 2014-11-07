@@ -132,9 +132,11 @@ class postfix::server (
   $spampd_children     = '20',
   $spampd_maxsize      = '512',
   # Other filters
+  $spf                   = false,
+  $spf_policy_service    = undef,
   $postgrey                = false,
   $postgrey_policy_service = undef,
-  $clamav                  = false,
+  $clamav                = false,
   # Parameters
   $command_directory      = $::postfix::params::command_directory,
   $config_directory       = $::postfix::params::config_directory,
@@ -152,6 +154,8 @@ class postfix::server (
   $spampd_package         = $::postfix::params::spampd_package,
   $spampd_config          = $::postfix::params::spampd_config,
   $spampd_template        = $::postfix::params::spampd_template,
+  $spf_package            = $::postfix::params::spf_package,
+  $spf_binary             = $::postfix::params::spf_binary ,
   $root_group             = $::postfix::params::root_group,
   $mailq_path             = $::postfix::params::mailq_path,
   $newaliases_path        = $::postfix::params::newaliases_path,
@@ -214,6 +218,12 @@ class postfix::server (
       content => template('postfix/spamassassin-local.cf.erb'),
       notify  => Service['spampd'],
     }
+  }
+
+  # Optional SPF setup
+  if $spf {
+    # Main package
+    package { $spf_package: ensure => installed }
   }
 
   # Optional Postgrey setup

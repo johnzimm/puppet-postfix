@@ -20,6 +20,8 @@ class postfix::params {
       $postfix_package = 'postfix'
       $postfix_mysql_package = 'postfix-mysql'
       $postfix_package_ensure = installed
+      $spf_package = 'pypolicyd-spf'
+      $spf_binary = '/usr/libexec/postfix/policyd-spf'
       $postgrey_package = 'postgrey'
       $spamassassin_package = 'spamassassin'
       $spampd_package = 'spampd'
@@ -45,6 +47,8 @@ class postfix::params {
       $postfix_package = 'postfix'
       $postfix_mysql_package = 'postfix-mysql'
       $postfix_package_ensure = installed
+      $spf_package = 'pypolicyd-spf'
+      $spf_binary = '/usr/libexec/postfix/policyd-spf'
       $postgrey_package = 'postgrey'
       $spamassassin_package = 'spamassassin'
       $spampd_package = 'spampd'
@@ -70,6 +74,8 @@ class postfix::params {
       $postfix_package = 'mail/postfix'
       $postfix_mysql_package = 'mail/postfix'
       $postfix_package_ensure = installed
+      $spf_package = 'pypolicyd-spf'
+      $spf_binary = '/usr/libexec/postfix/policyd-spf'
       $postgrey_package = 'mail/postgrey'
       $spamassassin_package = 'mail/spamassassin'
       $spampd_package = 'mail/spampd'

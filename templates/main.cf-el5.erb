@@ -881,11 +881,19 @@ smtpd_client_restrictions =
 <% end -%>
 
 <% end -%>
-<% if !@smtpd_recipient_restrictions.empty? or @postgrey -%>
+<% if !@smtpd_recipient_restrictions.empty? or @spf or @postgrey -%>
 smtpd_recipient_restrictions =
 <% @smtpd_recipient_restrictions.each do |line| -%>
   <%= line %>,
 <% end -%>
+<% if @spf -%>
+<% if @spf_policy_service -%>
+  check_policy_service <%= @spf_policy_service %>,
+<% else -%>
+  check_policy_service unix:private/spfpolicy,
+<% end -%>
+<% end -%>
+<% if @postgrey -%>
 <% if @postgrey_policy_service -%>
   check_policy_service <%= @postgrey_policy_service %>,
 <% else -%>
