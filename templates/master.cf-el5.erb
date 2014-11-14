@@ -93,6 +93,6 @@ dovecot   unix  -       n       n       -       -       pipe
 <%= service %>
 <% end -%>
 <% if @spf -%>
-policy-spf  unix  -       n       n       -       -       spawn
+spfpolicy  unix  -       n       n       -       -       spawn
 	user=nobody argv=<%= @spf_binary %>
 <% end -%>
